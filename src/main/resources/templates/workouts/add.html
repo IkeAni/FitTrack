@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Workout</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #495057;
+            font-weight: 600;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            box-shadow: none;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-secondary {
+            margin-top: 10px;
+        }
+
+        .exercise {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .exercise .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-row {
+            margin-top: 15px;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 10px;
+        }
+
+        .btn-add-exercise {
+            font-size: 1rem;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .btn-add-exercise:hover {
+            background-color: #e2e6ea;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        <h1 class="mb-4">Add Workout</h1>
+
+        <form action="/save" method="post">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+
+            <!-- Workout Name -->
+            <div class="form-group">
+                <label for="name">Workout Name:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="e.g., Rintapäivä" required>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+
+            <!-- Exercises Section -->
+            <div id="exercise-container" class="mt-4">
+                <h2>Exercises</h2>
+
+                <!-- First Exercise Section -->
+                <div class="exercise mb-3">
+                    <div class="form-group">
+                        <label for="exerciseName-0">Exercise Name:</label>
+                        <input type="text" id="exerciseName-0" name="exercises[0].exerciseName" class="form-control" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="sets-0">Sets:</label>
+                            <input type="number" id="sets-0" name="exercises[0].sets" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="reps-0">Reps:</label>
+                            <input type="number" id="reps-0" name="exercises[0].reps" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="weight-0">Weight (kg):</label>
+                            <input type="number" id="weight-0" name="exercises[0].weight" step="0.1" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Another Exercise Button -->
+            <button type="button" class="btn btn-secondary mt-3 btn-add-exercise" onclick="addExercise()">Add Another Exercise</button>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary mt-3">Save Workout</button>
+        </form>
+    </div>
+
+    <script>
+        let exerciseIndex = 1;
+
+        function addExercise() {
+            const container = document.getElementById("exercise-container");
+            const newExercise = document.createElement("div");
+            newExercise.classList.add("exercise", "mb-3");
+            newExercise.innerHTML = `
+                <div class="form-group">
+                    <label for="exerciseName-${exerciseIndex}">Exercise Name:</label>
+                    <input type="text" id="exerciseName-${exerciseIndex}" name="exercises[${exerciseIndex}].exerciseName" class="form-control" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="sets-${exerciseIndex}">Sets:</label>
+                        <input type="number" id="sets-${exerciseIndex}" name="exercises[${exerciseIndex}].sets" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="reps-${exerciseIndex}">Reps:</label>
+                        <input type="number" id="reps-${exerciseIndex}" name="exercises[${exerciseIndex}].reps" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="weight-${exerciseIndex}">Weight (kg):</label>
+                        <input type="number" id="weight-${exerciseIndex}" name="exercises[${exerciseIndex}].weight" step="0.1" class="form-control">
+                    </div>
+                </div>
+            `;
+            container.appendChild(newExercise);
+            exerciseIndex++;
+        }
+    </script>
+
+</body>
+</html>
+

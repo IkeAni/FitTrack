@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign-up</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #5D5C61;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 5px;
+            border-color: #ccc;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 1.1rem;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+        }
+        .error-message p {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create Account</h1>
+    <div class="card col-md-6 mx-auto">
+        <form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+            
+            <!-- Username Input -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Enter username" />
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-message"></p>	
+            </div>
+            
+            <!-- Password Input -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Enter password" />
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></p>	
+            </div>
+
+            <!-- Re-type Password Input -->
+            <div class="form-group">
+                <label for="passwordCheck">Re-type Password:</label>
+                <input type="password" th:field="*{passwordCheck}" class="form-control" id="passwordCheck" placeholder="Re-enter password" />
+                <p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}" class="error-message"></p>	
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Sign Up</button>		
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

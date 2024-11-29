@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>FitTrack</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #f8f9fa;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .login-container {
+                max-width: 400px;
+                width: 100%;
+                padding: 30px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                background-color: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .login-container h2 {
+                margin-bottom: 30px;
+            }
+            .alert {
+                margin-bottom: 20px;
+            }
+            .btn-block {
+                width: 100%;
+            }
+            .btn-lg {
+                width: 100%;
+            }
+            .signup-link {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .signup-link a {
+                text-decoration: none;
+                font-weight: bold;
+                color: #007bff;
+            }
+            .signup-link a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <h2 class="text-center">Login</h2>
+
+            <!-- Display error message if login fails -->
+            <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                Invalid username or password.
+            </div>
+
+            <!-- Display logout message -->
+            <div th:if="${param.logout}" class="alert alert-info" role="alert">
+                You have been logged out.
+            </div>
+
+            <!-- Login Form -->
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input type="text" id="username" name="username" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+                </div>
+            </form>
+
+            <div class="signup-link">
+                <span>Don't have an account? </span>
+                <a th:href="@{/signup}">Sign-up</a>
+            </div>
+        </div>
+    </body>
+</html>

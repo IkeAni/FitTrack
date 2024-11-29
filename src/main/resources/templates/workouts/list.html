@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Workouts</title>
+    <!-- Link to Bootstrap 4 CSS for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Add some custom styling to improve layout -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .logout-form {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .btn {
+            margin-right: 10px;
+        }
+
+        .table th, .table td {
+            text-align: center;
+        }
+
+        .thead-dark {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .btn-success, .btn-danger, .btn-info {
+            width: 100px;
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logout Button (Top-left corner) -->
+    <form th:action="@{/logout}" method="post" class="logout-form">
+        <input type="submit" value="Sign Out" class="btn btn-danger"/>
+    </form>
+
+
+    <div class="container">
+        <h1 class="mb-4 text-center">Your Workouts</h1>
+
+        <!-- Add Workout Button -->
+        <div class="text-center mb-4">
+            <a href="/add" class="btn btn-primary btn-lg">Add Workout</a>
+        </div>
+
+        <!-- Table displaying the workouts -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="workout : ${workouts}">
+                        <td th:text="${workout.name}"></td>
+                        <td th:text="${workout.date}"></td>
+                        <td>
+                            <!-- View Details Button -->
+                            <a th:href="@{/workouts/{id}(id=${workout.id})}" class="btn btn-info btn-sm">View</a>
+                            
+                            <!-- Mark as Completed Button -->
+                            <form th:action="@{/workouts/mark-completed/{id}(id=${workout.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-success btn-sm"
+                                        th:text="${workout.completed ? 'Completed' : 'Mark as Completed'}"></button>
+                            </form>
+                            
+                            <!-- Delete Button -->
+                            <a th:href="@{/workouts/delete/{id}(id=${workout.id})}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
+

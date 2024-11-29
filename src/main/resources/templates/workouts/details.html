@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Workout Details</title>
+    <!-- Link to Bootstrap 4 CSS for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom styles for additional customization -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #6c757d;
+            font-size: 1.8rem;
+        }
+
+        .btn-back {
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .table-bordered {
+            border: 1px solid #ddd;
+        }
+
+        .table thead th {
+            border-top: 2px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container py-5">
+        <!-- Workout Name -->
+        <h1 th:text="${workout.name}" class="text-center mb-4"></h1>
+
+        <!-- Workout Date -->
+        <p class="text-center mb-4"><strong>Date:</strong> <span th:text="${workout.date}"></span></p>
+
+        <!-- Exercises Section -->
+        <h2 class="mb-4">Exercises</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Sets</th>
+                        <th>Reps</th>
+                        <th>Weight (kg)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="exercise : ${workout.exercises}">
+                        <td th:text="${exercise.exerciseName}"></td>
+                        <td th:text="${exercise.sets}"></td>
+                        <td th:text="${exercise.reps}"></td>
+                        <td th:text="${exercise.weight}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Back to List Button -->
+        <a href="/list" class="btn btn-secondary btn-lg btn-back">Back to List</a>
+    </div>
+
+</body>
+</html>
+
+

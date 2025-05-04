@@ -1,9 +1,12 @@
 name: CI - Build and Test
 
 on:
+  push:
+    branches:
+      - main    # Käynnistyy kun pusketaan mainiin
   pull_request:
     branches:
-      - main  # CI käynnistyy kun tehdään PR mainiin
+      - main    # Käynnistyy kun tehdään PR mainiin
 
 jobs:
   build-and-test:
@@ -24,3 +27,4 @@ jobs:
 
     - name: Run tests
       run: mvn test
+

@@ -6,7 +6,7 @@
 
 **Päivämäärä:** 6.5.2025
 
-**Projektivideo:** *(lisätään myöhemmin)*
+**Projektivideo:** 🎥 [Katso projektivideo Microsoft Streamissa](https://haagahelia-my.sharepoint.com/:v:/g/personal/bhi030_myy_haaga-helia_fi/EUd6h7gMqgVGl1Sgk5SBsIwBrcfixT-XGz0iM0vRWLboRg?e=QTPd67)
 
 ---
 

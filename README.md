@@ -3,7 +3,9 @@
 ## CI/CD Java Maven -projektille: FitTrack
 
 **Tekijä:** Ike Aniebonam
+
 **Päivämäärä:** 6.5.2025
+
 **Projektivideo:** *(lisätään myöhemmin)*
 
 ---
@@ -156,3 +158,59 @@ graph TD
 ```
 
 Tämä rakenne mahdollistaa jatkuvan kehityksen, automaattisen testauksen ja julkaisemisen ilman ylimääräistä manuaalista vaivaa. Se on yksinkertainen, tehokas ja soveltuu hyvin myös laajempiin projekteihin.
+
+---
+
+Tässä on sinulle pyytämäsi **kohta 5: Johtopäätökset ja reflektointi**, valmiina kopioitavaksi tai liitettäväksi dokumenttiin sellaisenaan:
+
+---
+
+## 5. Johtopäätökset ja reflektointi
+
+CI/CD-prosessin rakentaminen auttoi ymmärtämään käytännönläheisesti ohjelmistokehityksen automatisointia. Sen avulla voidaan varmistaa ohjelmiston laatu ja eheys jokaisen muutoksen yhteydessä, mikä vähentää manuaalista virheiden etsintää ja nopeuttaa kehitystä. Automatisoitu putki tekee projektista skaalautuvamman ja ammattimaisemman.
+
+### 🔍 Oivalluksia
+
+* CI/CD-putki toimii täysin ilman ulkoista palvelinta – oma kone ja GitHub riittävät
+* GitHub Actions on ilmainen, tehokas ja helppokäyttöinen työkalu pipelinejen automatisointiin
+* Docker Hub toimii loistavana konttikuvien jakelualustana, ja sen yhdistäminen GitHubiin on sujuvaa
+* GitHubin `secrets`-toiminto tarjoaa turvallisen tavan käsitellä salasanoja ja tunnuksia
+
+### 💭 Reflektointi
+
+Olen erittäin tyytyväinen työn lopputulokseen ja siihen, miten paljon opin matkan varrella. Projektin alussa tuli vastaan useita haasteita, kuten:
+
+* Mavenin asentaminen macOS-ympäristöön ilman Homebrew'ta
+* Docker-kuvien yhteensopivuusongelmat (ARM-pohjainen Mac vs GitHubin amd64-ympäristö)
+* `.jar`-tiedoston nimeämisen ja Dockerfile-viittauksen yhteensovittaminen
+
+Näiden ratkominen opetti kärsivällisyyttä ja ongelmanratkaisutaitoja. Samalla ymmärsin, kuinka tärkeää on tuntea kehitystyökalujen yhteispeli: kuinka GitHubin, Dockerin ja Mavenin osat linkittyvät toisiinsa saumattomasti.
+
+Projektin myötä opin rakentamaan ja ylläpitämään toimivaa DevOps-putkea, joka voisi helposti skaalautua myös tuotantokäyttöön. Tämä osaaminen luo hyvän pohjan tuleviin projekteihin, työharjoitteluun ja työelämään.
+
+---
+
+## 6. Lähteet
+
+- GitHub Actions Dokumentaatio
+https://docs.github.com/en/actions
+→ Dokumentaatio CI/CD-putken määrittämiseen, workflows, secrets, YAML-syntaksi
+
+- Docker Dokumentaatio
+https://docs.docker.com/
+→ Ohjeet Dockerfilen luontiin, imagien rakentamiseen ja Docker Hub -julkaisuun
+
+- Apache Maven
+https://maven.apache.org/guides/
+→ Projektin rakennustyökalun komennot, rakenteet ja testaus
+
+- Homebrew (macOS)
+https://brew.sh/
+→ Työkalujen kuten Mavenin ja JDK:n asentamiseen Mac-ympäristöön
+
+- Stack Overflow
+https://stackoverflow.com/
+→ Käytetty yksittäisten virhetilanteiden, kuten BuildKit-virheiden, selvittämiseen
+
+- YouTube: Build CI/CD Pipeline for Java Maven Using GitHub Actions  
+  https://www.youtube.com/watch?v=BqCe-nSXSGI

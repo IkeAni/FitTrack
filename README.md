@@ -121,6 +121,9 @@ Run mvn test
 [INFO] Total time:  6.746 s
 [INFO] Finished at: 2025-05-06T11:24:16Z
 ```
+```markdown
+🔗 [Katso koko workflow-loki](https://github.com/ikeani/fittrack/actions/runs/6789012345)
+```
 
 CI on ohjelmistokehityksessä kriittinen vaihe: se pitää projektin teknisesti kunnossa ja mahdollistaa jatkuvan kehityksen ilman pelkoa regressioista.
 
@@ -145,6 +148,7 @@ CD\:n vaiheissa opin muun muassa:
 * Miten `docker build` lukee kontekstin, ja kuinka väärä kansiorakenne voi rikkoa kuvan
 * Miten GitHubin `secrets`-ominaisuudella voi turvallisesti tallentaa Docker-tunnukset ilman, että ne näkyvät julkisesti
 
+## Esimerkkiloki GitHub Actionsin CD-vaiheesta (Docker build & push):
 ```bash
 docker build -t ikeani/fittrack:latest .
 Sending build context to Docker daemon  18.3MB
@@ -160,6 +164,9 @@ Successfully tagged ikeani/fittrack:latest
 
 docker push ikeani/fittrack:latest
 Pushed ikeani/fittrack:latest to Docker Hub
+```
+```markdown
+🔗 [Katso koko workflow-loki](https://github.com/ikeani/fittrack/actions/runs/6789012345)
 ```
 
 CD-toiminnallisuus mahdollisti sen, että julkaisin projektin valmiin version yhdellä pushilla — ilman komentorivityötä. Tämä tekee ohjelmiston elinkaaren hallinnasta huomattavasti tehokkaampaa ja luotettavampaa.

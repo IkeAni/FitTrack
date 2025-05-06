@@ -130,11 +130,12 @@ Continuous Deployment (CD) tarkoittaa automaattista ohjelmiston julkaisemista, k
 
 CD-putken tarkoituksena on:
 
-* Rakentaa valmis `.jar` Mavenilla
-* Paketoida se Docker-kuvaksi `Dockerfile`-tiedoston ohjeiden mukaisesti
-* Kirjautua Docker Hubiin GitHub Secretsien avulla
-* Puskea kuva tunnuksella `ikeani/fittrack:latest` Docker Hubiin
-* 
+* Rakentaa valmis `.jar` Mavenilla  
+* Paketoida se Docker-kuvaksi `Dockerfile`-tiedoston ohjeiden mukaisesti  
+* Kirjautua Docker Hubiin GitHub Secretsien avulla  
+* Puskea kuva tunnuksella `ikeani/fittrack:latest` Docker Hubiin  
+* 📄 [Katso cd.yml-tiedosto](https://github.com/ikeani/fittrack/blob/main/.github/workflows/cd.yml)  
+* 🐳 [Katso Dockerfile](https://github.com/ikeani/fittrack/blob/main/Dockerfile)
 
 CD mahdollistaa automaattisen ja yhdenmukaisen julkaisemisen. Jokainen uusi koodiversio päätyy automaattisesti Docker Hubiin ilman manuaalisia komentoja.
 

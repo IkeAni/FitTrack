@@ -1,4 +1,4 @@
-# Ohjelmistokehityksen teknologiat – Seminaarityö
+# Ohjelmistokehityksen teknologioita – Seminaarityö
 
 ## CI/CD Java Maven -projektille: FitTrack
 
@@ -55,15 +55,15 @@ Toteutus tehtiin paikallisesti, ilman pilvipalvelinta, mutta silti täysin autom
 
 ### 3.1 Projektin valmistelu
 
-Projektina käytettiin aiemmin toteutettua Java Maven -sovellusta nimeltä FitTrack. Projektin rakenne tarkistettiin ja varmistettiin, että `mvn clean package` tuottaa .jar-tiedoston, joka voidaan paketoida Docker-kuvaksi.
+Projektina käytettiin minun aiemmin toteutettua Java Maven -sovellusta nimeltä FitTrack. Projektin rakenne tarkistettiin ja varmistettiin, että `mvn clean package` tuottaa .jar-tiedoston, joka voidaan paketoida Docker-kuvaksi.
 
 ### 3.2 GitHub-repositorion luominen
 
-Projektin lähdekoodi versioitiin ja julkaistiin GitHub-repositorioon. Versionhallinnan avulla mahdollistettiin GitHub Actions -workflowiden ajaminen automaattisesti.
+Projektin lähdekoodi versioitiin ja julkaistiin GitHub-repositorioon. Versionhallinnan avulla mahdollistettiin GitHub Actions -workflowien ajaminen automaattisesti.
 
 ```bash
 git init
-git remote add origin <repository_url>
+git remote add origin https://github.com/IkeAni/FitTrack.git
 git add .
 git commit -m "Initial commit"
 git push -u origin main
@@ -81,6 +81,7 @@ CI-workflow sisältää seuraavat vaiheet:
 * **JDK 17\:n asennus**: Java-projektin kääntämistä varten käytetään OpenJDK 17 -ympäristöä
 * **Projektin kääntäminen**: Mavenin mvn clean package luo .jar-tiedoston
 * **Testien suoritus**: mvn test ajaa kaikki testit ja palauttaa onnistumisstatuksen
+* 📄 [Katso ci.yml-tiedosto](https://github.com/ikeani/fittrack/blob/main/.github/workflows/ci.yml)
 
 Tämän automatisoinnin ansiosta kehittäjät saavat heti palautteen siitä, rikkooko koodimuutos mitään olemassa olevaa toiminnallisuutta. CI vähentää manuaalista testaustyötä ja estää virheiden päätymistä päähaaraan.
 
@@ -133,6 +134,7 @@ CD-putken tarkoituksena on:
 * Paketoida se Docker-kuvaksi `Dockerfile`-tiedoston ohjeiden mukaisesti
 * Kirjautua Docker Hubiin GitHub Secretsien avulla
 * Puskea kuva tunnuksella `ikeani/fittrack:latest` Docker Hubiin
+* 
 
 CD mahdollistaa automaattisen ja yhdenmukaisen julkaisemisen. Jokainen uusi koodiversio päätyy automaattisesti Docker Hubiin ilman manuaalisia komentoja.
 

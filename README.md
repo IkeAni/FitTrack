@@ -139,17 +139,20 @@ CD-toiminnallisuus mahdollisti sen, että julkaisin projektin valmiin version yh
 
 ---
 
-4. CI/CD-arkkitehtuuri ja toiminta
+## 4. CI/CD-arkkitehtuuri ja toiminta
+
+### 🔧 CI/CD-mermaid-kaavio
 
 Alla oleva kaavio kuvaa koko CI/CD-prosessin etenemisen: kuinka koodimuutos kulkee buildista julkaisuun Docker Hubiin ja edelleen paikalliselle koneelle testattavaksi.
 
+```mermaid
 graph TD
-    A[Kehittäjä pushaa koodia GitHubiin] --> B[CI: Build & Test (GitHub Actions)]
-    B --> C{Onko haara 'main'?}
-    C -- Ei --> D[Pysäytetään julkaisu]
-    C -- Kyllä --> E[CD: Docker build & push]
-    E --> F[Docker-kuva Docker Hubissa]
-    F --> G[Paikallinen tai tuotantopalvelin vetää kuvan]
-    G --> H[Kontti ajetaan ja testataan]
+    A[Koodin push/pull request] --> B(CI: Build ja testit)
+    B --> C{Onko main-haara?}
+    C -- Ei --> D[Lopetetaan]
+    C -- Kyllä --> E(CD: Build ja Docker push)
+    E --> F[Docker Hub: ikeani/fittrack]
+    F --> G[Paikallinen kone vetää ja ajaa imaget]
+```
 
 Tämä rakenne mahdollistaa jatkuvan kehityksen, automaattisen testauksen ja julkaisemisen ilman ylimääräistä manuaalista vaivaa. Se on yksinkertainen, tehokas ja soveltuu hyvin myös laajempiin projekteihin.

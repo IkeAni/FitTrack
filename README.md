@@ -83,7 +83,7 @@ CI-workflow sisältää seuraavat vaiheet:
 * **Testien suoritus**: mvn test ajaa kaikki testit ja palauttaa onnistumisstatuksen
 * 📄 [Katso ci.yml-tiedosto](https://github.com/ikeani/fittrack/blob/main/.github/workflows/ci.yml)
 
-Tämän automatisoinnin ansiosta kehittäjät saavat heti palautteen siitä, rikkooko koodimuutos mitään olemassa olevaa toiminnallisuutta. CI vähentää manuaalista testaustyötä ja estää virheiden päätymistä päähaaraan.
+Tämän automatisoinnin ansiosta kehittäjät saavat heti palautteen siitä, rikkooko koodimuutos mitään olemassa olevaa toiminnallisuutta. CI vähentää manuaalista testaustyötä ja estää virheiden päätymistä päähaaraan. Sekä luo selvät rakenteet kehittäjille.
 
 CI\:n käyttöönoton aikana opin myös virheiden tulkintaa: esimerkiksi puuttuvat riippuvuudet, väärät tiedostopolut tai virheellisesti nimetyt .jar-tiedostot aiheuttivat build-epäonnistumisia, jotka näkyvät GitHub Actions -lokeissa selkeästi. Näiden avulla oli helppo paikantaa ongelma ja korjata se.
 
@@ -168,7 +168,7 @@ Pushed ikeani/fittrack:latest to Docker Hub
 🔗 [Katso koko workflow-loki](https://github.com/IkeAni/FitTrack/actions/workflows/cd.yml)
 
 
-CD-toiminnallisuus mahdollisti sen, että julkaisin projektin valmiin version yhdellä pushilla — ilman komentorivityötä. Tämä tekee ohjelmiston elinkaaren hallinnasta huomattavasti tehokkaampaa ja luotettavampaa.
+CD-toiminnallisuus mahdollisti minulle sen, että pystyin julkaisemaan projektin valmiin version yhdellä pushilla — ilman komentorivityötä. Tämä tekee ohjelmiston elinkaaren hallinnasta huomattavasti tehokkaampaa ja luotettavampaa.
 
 ---
 
@@ -176,7 +176,7 @@ CD-toiminnallisuus mahdollisti sen, että julkaisin projektin valmiin version yh
 
 ### 🔧 CI/CD-mermaid-kaavio
 
-Alla oleva kaavio kuvaa koko CI/CD-prosessin etenemisen: kuinka koodimuutos kulkee buildista julkaisuun Docker Hubiin ja edelleen paikalliselle koneelle testattavaksi.
+Seuraava kaavio havainnollistaa mielestäni hyvin ja yksinkertaisesti CI/CD-putken kokonaisuuden: miten koodimuutokset siirtyvät automaattisesti testausvaiheesta Docker-kuvan rakentamiseen ja julkaisuun Docker Hubiin — josta ne voidaan vetää ja ajaa paikallisesti tai tuotantoympäristössä
 
 ```mermaid
 graph TD
@@ -194,7 +194,7 @@ Tämä rakenne mahdollistaa jatkuvan kehityksen, automaattisen testauksen ja jul
 
 ## 5. Johtopäätökset ja reflektointi
 
-CI/CD-prosessin rakentaminen auttoi ymmärtämään käytännönläheisesti ohjelmistokehityksen automatisointia. Sen avulla voidaan varmistaa ohjelmiston laatu ja eheys jokaisen muutoksen yhteydessä, mikä vähentää manuaalista virheiden etsintää ja nopeuttaa kehitystä. Automatisoitu putki tekee projektista skaalautuvamman ja ammattimaisemman.
+CI/CD-prosessin rakentaminen auttoi minua ymmärtämään käytännönläheisesti ohjelmistokehityksen automatisointia. Sen avulla voidaan varmistaa ohjelmiston laatu ja eheys jokaisen muutoksen yhteydessä, mikä vähentää manuaalista virheiden etsintää ja nopeuttaa kehitystä. Automatisoitu putki tekee projektista skaalautuvamman ja ammattimaisemman.
 
 ### 🔍 Oivalluksia
 

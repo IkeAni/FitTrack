@@ -71,32 +71,54 @@ git push -u origin main
 
 ### 3.3 CI – Build ja testaus
 
-Continuous Integration (CI) tarkoittaa käytäntöä, jossa koodimuutokset integroidaan jatkuvasti pääprojektiin ja niiden toimivuus varmistetaan automaattisesti. Tässä projektissa CI toteutettiin GitHub Actionsin avulla, luomalla tiedosto `.github/workflows/ci.yml`.
+Continuous Integration (CI) tarkoittaa käytäntöä, jossa koodimuutokset integroidaan jatkuvasti pääprojektiin ja niiden toimivuus varmistetaan automaattisesti. Tässä projektissa CI toteutettiin GitHub Actionsin avulla, luomalla tiedosto .github/workflows/ci.yml.
 
-CI käynnistyy automaattisesti aina, kun koodia pusketaan `main`-haaraan tai kun tehdään pull request siihen. Workflow tarkistaa, että projektin rakenne on kunnossa, koodi kääntyy virheettömästi ja yksikkötestit menevät läpi.
+CI käynnistyy automaattisesti aina, kun koodia pusketaan main-haaraan tai kun tehdään pull request siihen. Workflow tarkistaa, että projektin rakenne on kunnossa, koodi kääntyy virheettömästi ja yksikkötestit menevät läpi.
 
 CI-workflow sisältää seuraavat vaiheet:
 
 * **Koodin hakeminen**: GitHub hakee projektin viimeisimmän version build-agentille
 * **JDK 17\:n asennus**: Java-projektin kääntämistä varten käytetään OpenJDK 17 -ympäristöä
-* **Projektin kääntäminen**: Mavenin `mvn clean package` luo `.jar`-tiedoston
-* **Testien suoritus**: `mvn test` ajaa kaikki testit ja palauttaa onnistumisstatuksen
+* **Projektin kääntäminen**: Mavenin mvn clean package luo .jar-tiedoston
+* **Testien suoritus**: mvn test ajaa kaikki testit ja palauttaa onnistumisstatuksen
 
 Tämän automatisoinnin ansiosta kehittäjät saavat heti palautteen siitä, rikkooko koodimuutos mitään olemassa olevaa toiminnallisuutta. CI vähentää manuaalista testaustyötä ja estää virheiden päätymistä päähaaraan.
 
-CI\:n käyttöönoton aikana opin myös virheiden tulkintaa: esimerkiksi puuttuvat riippuvuudet, väärät tiedostopolut tai virheellisesti nimetyt `.jar`-tiedostot aiheuttivat build-epäonnistumisia, jotka näkyvät GitHub Actions -lokeissa selkeästi. Näiden avulla oli helppo paikantaa ongelma ja korjata se.
+CI\:n käyttöönoton aikana opin myös virheiden tulkintaa: esimerkiksi puuttuvat riippuvuudet, väärät tiedostopolut tai virheellisesti nimetyt .jar-tiedostot aiheuttivat build-epäonnistumisia, jotka näkyvät GitHub Actions -lokeissa selkeästi. Näiden avulla oli helppo paikantaa ongelma ja korjata se.
 
+### Esimerkkiloki buildin ja testien onnistumisesta
 ```bash
 Run mvn clean package
 [INFO] Scanning for projects...
-[INFO] Building FitTrack 0.0.1-SNAPSHOT
-[INFO] Total time: 2.5 s
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/3.4.0/spring-boot-starter-parent-3.4.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar (752 kB at 6.0 MB/s)
+...
+[INFO] Replacing main artifact /home/runner/work/FitTrack/FitTrack/target/fittrack-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/runner/work/FitTrack/FitTrack/target/fittrack-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.079 s
+[INFO] Finished at: 2025-05-06T11:24:08Z
 
 Run mvn test
-[INFO] Running AppTest
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< fi.backend:fittrack >-------------------------
+[INFO] Building fittrack 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+...
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.955 s -- in fi.backend.fittrack.FittrackApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.746 s
+[INFO] Finished at: 2025-05-06T11:24:16Z
 ```
 
 CI on ohjelmistokehityksessä kriittinen vaihe: se pitää projektin teknisesti kunnossa ja mahdollistaa jatkuvan kehityksen ilman pelkoa regressioista.
@@ -158,10 +180,6 @@ graph TD
 ```
 
 Tämä rakenne mahdollistaa jatkuvan kehityksen, automaattisen testauksen ja julkaisemisen ilman ylimääräistä manuaalista vaivaa. Se on yksinkertainen, tehokas ja soveltuu hyvin myös laajempiin projekteihin.
-
----
-
-Tässä on sinulle pyytämäsi **kohta 5: Johtopäätökset ja reflektointi**, valmiina kopioitavaksi tai liitettäväksi dokumenttiin sellaisenaan:
 
 ---
 

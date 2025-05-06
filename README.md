@@ -122,7 +122,7 @@ Run mvn test
 [INFO] Finished at: 2025-05-06T11:24:16Z
 ```
 
-🔗 [Katso koko workflow-loki](https://github.com/ikeani/fittrack/actions/runs/6789012345)
+🔗 [Katso koko workflow-loki](https://github.com/IkeAni/FitTrack/actions)
 
 CI on ohjelmistokehityksessä kriittinen vaihe: se pitää projektin teknisesti kunnossa ja mahdollistaa jatkuvan kehityksen ilman pelkoa regressioista.
 
@@ -165,7 +165,7 @@ docker push ikeani/fittrack:latest
 Pushed ikeani/fittrack:latest to Docker Hub
 ```
 
-🔗 [Katso koko workflow-loki](https://github.com/ikeani/fittrack/actions/runs/6789012345)
+🔗 [Katso koko workflow-loki](https://github.com/IkeAni/FitTrack/actions)
 
 
 CD-toiminnallisuus mahdollisti sen, että julkaisin projektin valmiin version yhdellä pushilla — ilman komentorivityötä. Tämä tekee ohjelmiston elinkaaren hallinnasta huomattavasti tehokkaampaa ja luotettavampaa.
